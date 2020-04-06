@@ -1,8 +1,12 @@
+기본
+===
 React를 시작하기 위해 관련 파일의 링크를 걸어준다.
+
 ```
 <script crossorigin src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
 <script crossorigin src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
 ```
+
 Babel을 사용하기 위해 링크를 걸어준다. 최신화된 스크립트를 브라우저에서 인식할 수 있도록 해준다.
 ```
 <script src = "https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
@@ -37,4 +41,32 @@ Babel을 사용하기 위해 링크를 걸어준다. 최신화된 스크립트�
             //컴포넌트를 렌더링 한다. id 가 root인 곳에
             ReactDOM.render(<LikeButton />, document.querySelector('#root'));
         </script>
+```
+
+클래스에 메서드만들기
+
+```
+       class Gugudan extends React.Component {
+            constructor(props) {
+                ...
+            }
+
+            //아래는 클래스 내에서 this.메서드명 으로 호출된다.
+            calc = (e) => {
+                ...
+            }
+
+            change = (e) =>{
+                this.setState({value:e.target.value})
+            }
+              
+            render() {
+                return (
+                    ...
+                        //함수를 호출하는 부분이다. { this.calc}
+                        <button onClick={this.calc}>입력!</button>
+                        ...
+                    );
+            }
+        }
 ```
