@@ -70,3 +70,36 @@ Babel을 사용하기 위해 링크를 걸어준다. 최신화된 스크립트�
             }
         }
 ```
+
+render시 div tag 제거하기
+===
+지금 우선은 React.Fragment로 변경한다.
+
+constructor
+===
+```
+//constructor 없이 아래처럼 바로 써도 된다.
+class Gugudan extends React.Component {
+            state = {
+                    first : Math.ceil(Math.random() * 9),
+                    second : Math.ceil(Math.random() * 9),
+                    value : '',
+                    result : ''
+                }
+            
+```
+
+함수형 setState
+===
+```
+//현재 state값을 변경시키기 위해 this.state.first를 사용하지만 setState는 비동기로 작동한다. 그래서 함수형으로 변경한 후 명시적으로 이전값을 사용하도록 한다.
+this.setState({    
+    first : this.state.first
+});
+//함수형으로 변경한 setState
+this.setState((prevState) =>{                
+    return {    
+        first : prevState.first    
+    };                 
+});
+```

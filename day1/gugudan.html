@@ -25,12 +25,14 @@
                 e.preventDefault();
 
                 if (parseInt(this.state.value) === this.state.first*this.state.second){
-                    this.setState({                    
-                        first : Math.ceil(Math.random() * 9),
-                        second : Math.ceil(Math.random() * 9),
-                        value : '',
-                        result : '정답!'                        
-                    })
+                    this.setState((prefState) =>{                
+                        return {    
+                            first : Math.ceil(Math.random() * 9),
+                            second : Math.ceil(Math.random() * 9),
+                            value : '',
+                            result : '정답!'       
+                        };                 
+                    });
                 }else{
                     this.setState({
                         value : '',
@@ -45,12 +47,12 @@
               
             render() {
                 return (
-                    <div>
+                    <React.Fragment>
                         <div>{this.state.first}곱하기 {this.state.second}는?</div>
                         <input type='number' value={this.state.value} onChange={this.change}/>
                         <button onClick={this.calc}>입력!</button>
                         <div>{this.state.result}</div>
-                    </div>
+                    </React.Fragment>
                     );
             }
         }
