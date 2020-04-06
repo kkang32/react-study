@@ -39,17 +39,19 @@
                         result : '땡'                        
                     })
                 }
+                this.input.focus();
             }
 
             change = (e) =>{
                 this.setState({value:e.target.value})
             }
               
+            input;
             render() {
                 return (
                     <React.Fragment>
                         <div>{this.state.first}곱하기 {this.state.second}는?</div>
-                        <input type='number' value={this.state.value} onChange={this.change}/>
+                        <input ref={(c) => {this.input = c;}} type='number' value={this.state.value} onChange={this.change}/>
                         <button onClick={this.calc}>입력!</button>
                         <div>{this.state.result}</div>
                     </React.Fragment>

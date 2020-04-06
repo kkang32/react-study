@@ -103,3 +103,21 @@ this.setState((prevState) =>{
     };                 
 });
 ```
+
+render시점
+===
+state가 변할때마다 render()가 실행된다. 
+때문에 해당 함수에 내용이 많다면 느려지게된다.
+이번 예제에서는 input창에 글을 입력할 때 마다 state.value가 바뀌기 때문에 render() 에 로그를 찍어보면 알 수 있다.
+
+input창에 focus 주기
+===
+```
+class Gugudan extends React.Component {
+...
+//클래스 안에 input 객체를 저장할 변수를 만들어 둔다.
+    input;
+...
+//ref 속성으로 현재 객체를 변수에 저장한다.
+ <input ref={(c) => {this.input = c;}} 
+ ```
